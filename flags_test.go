@@ -1,7 +1,7 @@
 package flags_test
 
 import "testing"
-import "grisp/protocol/flags"
+import "github.com/CrimeanBitches/go-flags"
 
 func TestByteFlags(t *testing.T) {
 	v := make([]flags.Byte, 8)
@@ -19,10 +19,8 @@ func TestByteFlags(t *testing.T) {
 		t.Errorf("add error. expected: %v, got: %v", 255, byte(flag))
 	}
 
-	for i := 0; i < len(v); i++ {
-		if !flag.Is(v[i]) {
-			t.Error("is error")
-		}
+	if !flag.IsAll(v...) {
+		t.Error("is error")
 	}
 
 	for i := 0; i < len(v); i++ {
@@ -33,10 +31,8 @@ func TestByteFlags(t *testing.T) {
 		t.Error("remove error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if flag.Is(v[i]) {
-			t.Error("not is error")
-		}
+	if flag.IsAny(v...) {
+		t.Error("is error")
 	}
 }
 
@@ -56,10 +52,8 @@ func TestUint16Flags(t *testing.T) {
 		t.Error("add error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if !flag.Is(v[i]) {
-			t.Error("is error")
-		}
+	if !flag.IsAll(v...) {
+		t.Error("is error")
 	}
 
 	for i := 0; i < len(v); i++ {
@@ -70,10 +64,8 @@ func TestUint16Flags(t *testing.T) {
 		t.Error("remove error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if flag.Is(v[i]) {
-			t.Error("not is error")
-		}
+	if flag.IsAny(v...) {
+		t.Error("is error")
 	}
 }
 
@@ -93,10 +85,8 @@ func TestUint32Flags(t *testing.T) {
 		t.Error("add error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if !flag.Is(v[i]) {
-			t.Error("is error")
-		}
+	if !flag.IsAll(v...) {
+		t.Error("is error")
 	}
 
 	for i := 0; i < len(v); i++ {
@@ -107,10 +97,8 @@ func TestUint32Flags(t *testing.T) {
 		t.Error("remove error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if flag.Is(v[i]) {
-			t.Error("not is error")
-		}
+	if flag.IsAny(v...) {
+		t.Error("is error")
 	}
 }
 
@@ -130,10 +118,8 @@ func TestUint64Flags(t *testing.T) {
 		t.Error("add error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if !flag.Is(v[i]) {
-			t.Error("is error")
-		}
+	if !flag.IsAll(v...) {
+		t.Error("is error")
 	}
 
 	for i := 0; i < len(v); i++ {
@@ -144,9 +130,7 @@ func TestUint64Flags(t *testing.T) {
 		t.Error("remove error")
 	}
 
-	for i := 0; i < len(v); i++ {
-		if flag.Is(v[i]) {
-			t.Error("not is error")
-		}
+	if flag.IsAny(v...) {
+		t.Error("is error")
 	}
 }
